@@ -12,7 +12,7 @@ use Symfony\Component\Finder\Finder;
 
 class Manager
 {
-    const JSON_GROUP = '_json';
+    const JSON_GROUP = '*';
 
     const LOGGING = [
         'info' => "\033[32m%s\033[0m",
