@@ -29,15 +29,13 @@ class TranslationsImportServiceProvider extends ServiceProvider
     public function boot()
     {
         // Register the commands
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                TranslationsImport::class,
-                TranslationsExport::class,
-                TranslationsFind::class,
-                TranslationsClean::class,
-                TranslationsNuke::class
-            ]);
-        }
+        $this->commands([
+            TranslationsImport::class,
+            TranslationsExport::class,
+            TranslationsFind::class,
+            TranslationsClean::class,
+            TranslationsNuke::class
+        ]);
 
         // Merge package config with published config
         $this->mergeConfigFrom(__DIR__ . '/../config/translations-import.php', 'translations-import');
