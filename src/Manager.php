@@ -179,7 +179,7 @@ class Manager
                             // Import all translations from the JSON
                             if ($translations && is_array($translations)) {
                                 foreach ($translations as $key => $value) {
-                                    if ($this->importTranslation($key, $value, $locale, $group)) {
+                                    if ($this->importTranslation($this->escape($key), $value, $locale, $group)) {
                                         $counter++;
                                     }
                                 }
@@ -796,5 +796,23 @@ class Manager
         );
 
         return $export;
+    }
+
+    public function escape(string $text): string
+    {
+        return str_replace(
+            ["\\", "\n", "\r", "\t"],
+            ["\\\\", "\\n", "\\r", "\\t"],
+            $text
+        );
+    }
+
+    public function unescape(string $text): string
+    {
+        return str_replace(
+            ["\\n", "\\r", "\\t", "\\\\"],
+            ["\n", "\r", "\t", "\\"],
+            $text
+        );
     }
 }
