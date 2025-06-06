@@ -589,7 +589,7 @@ class Manager
                     // Get json data from the file
                     $json = json_decode($jsonTranslationFile->getContents(), true);
 
-                    $translations[$locale] = $json[$key] ?? '';
+                    $translations[$locale] = $json[$key] ?? $key;
                 }
             }
         } else {
